@@ -8,10 +8,11 @@ public class Mover : MonoBehaviour {
 	public GameObject mDebugSphere;
 
 	private float mMovementSpeed = 1.0f;
-	private float mRotationSpeed = 1.0f;
+	private float mTurnSpeed = 1.0f;
 	public Vector3 mCurrentTargetLocation;
 	private Vector3 mCurrentDirectionFacing;
-
+	
+	private float mVisionRange;
 
 	public float MovementSpeed
 	{
@@ -25,15 +26,27 @@ public class Mover : MonoBehaviour {
 		}
 	}
 
-	public float RotationSpeed
+	public float TurnSpeed
 	{
 		get
 		{
-			return mRotationSpeed;
+			return mTurnSpeed;
 		}
 		set
 		{
-			mRotationSpeed = value;
+			mTurnSpeed = value;
+		}
+	}
+
+	public float VisionRange
+	{
+		get
+		{
+			return mVisionRange;
+		}
+		set
+		{
+			mVisionRange = value;
 		}
 	}
 
@@ -90,7 +103,7 @@ public class Mover : MonoBehaviour {
 			deltaToTarget.y = 0;
 			if( deltaToTarget.sqrMagnitude != 0 )
 			{
-				Vector3 newDir = Vector3.RotateTowards( transform.forward, deltaToTarget.normalized, Time.deltaTime * mRotationSpeed, 0.0f );
+				Vector3 newDir = Vector3.RotateTowards( transform.forward, deltaToTarget.normalized, Time.deltaTime * mTurnSpeed, 0.0f );
 				gameObject.transform.rotation = Quaternion.LookRotation( newDir );
 			}
 		}

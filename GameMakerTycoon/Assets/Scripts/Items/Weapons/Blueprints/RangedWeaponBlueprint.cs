@@ -46,8 +46,8 @@ public class RangedWeaponBlueprint : WeaponBlueprint
 	override public GameObject SpawnWeapon( Vector3 pos )
 	{
 		Debug.Log( "attempting to spawn ranged weapon" );
-		GameObject weapon = GameObject.Instantiate( Resources.Load( "Items/Weapons/" + this.PrefabName, typeof(GameObject) ), pos, Quaternion.identity ) as GameObject;
-		
+		GameObject weapon = GameObject.Instantiate( Resources.Load( "Items/Weapons/" + this.PrefabName, typeof(GameObject) ) ) as GameObject;
+		weapon.transform.position = pos;
 		RangeWeapon weaponComp = weapon.AddComponent<RangeWeapon>();
 		weaponComp.AttackStats = this.AttackStats;
 		weaponComp.NumberOfUses = this.Ammo;

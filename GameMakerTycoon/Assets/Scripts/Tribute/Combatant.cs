@@ -13,7 +13,8 @@ public class Combatant : MonoBehaviour {
 	
 	private AttackStats mBaseAttack = new AttackStats();
 	private int mKillCount = 0;
-	private int mHealth = 100;
+	private int mMaxHealth = 100;
+	private int mCurrentHealth = 100;
 
 	private float mNextValidAttackTime = 0.0f;
 
@@ -37,11 +38,25 @@ public class Combatant : MonoBehaviour {
 		}
 	}
 
-	public int Health
+	public int CurrentHealth
 	{
 		get
 		{
-			return mHealth;
+			return mCurrentHealth;
+		}
+	}
+
+	public int MaxHealth
+	{
+		get
+		{
+			return mMaxHealth;
+		}
+		set
+		{
+			if( mMaxHealth == mCurrentHealth )
+				mCurrentHealth = value;
+			mMaxHealth = value;
 		}
 	}
 
@@ -53,7 +68,7 @@ public class Combatant : MonoBehaviour {
 			if( deltaToTarget.sqrMagnitude <= mBaseAttack.range * mBaseAttack.range )
 			{
 				combatant.TakeDamage( this, mBaseAttack.power );
-				if( combatant.mHealth <= 0 )
+				if( combatant.mCurrentHealth <= 0 )
 					++mKillCount;
 			}
 			mNextValidAttackTime = Time.time + mBaseAttack.speed;
@@ -62,13 +77,18 @@ public class Combatant : MonoBehaviour {
 
 	public void TakeDamage( Combatant damageDealer, int damage )
 	{
-		mHealth -= damage;
+		mCurrentHealth -= damage;
 		Debug.Log( "Damage taken: " + damage );
 	}
 
 	public void AddToKillCount( int count )
 	{
 		mKillCount += count;
+	}
+
+	public void ApplyItemEffects( Item.ItemEffect effects )
+	{
+		mCurrentHealth += effects.modToHealth;
 	}
 
 	// Use this for initialization

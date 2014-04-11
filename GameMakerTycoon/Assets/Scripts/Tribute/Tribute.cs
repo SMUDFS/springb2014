@@ -15,32 +15,81 @@ public class Tribute : MonoBehaviour {
 
 	public class AttributeStats
 	{
-		int intelligence;
-		int aggressiveness;
-		int resourcefulness;
-		int cooperativeness;
-		int courage;
-		int charisma;
-		int hungerBAScore;
+		public int intelligence;
+		public int aggressiveness;
+		public int resourcefulness;
+		public int cooperativeness;
+		public int courage;
+		public int charisma;
+		public int hungerBAScore;
 	};
 
 	public Transform mItemUseAnchorPoint;
 
 	private string mName;
-	private int mId;
 	private int mTeamNumber = -1;
 	private int mDistrict;
 	private Gender mGender;
 
 	private AttributeStats mAttributeStats;
 
-	private int mHungerLevel;
-	private int mThirstLevel;
+	private int mMaxHungerLevel;
+	private int mCurrentHungerLevel;
+	private int mMaxThirstLevel;
+	private int mCurrentThirstLevel;
+
 
 	private Combatant mCombatant;
 	private Mover mMover;
 
 	private Inventory mInventory;
+
+	public string Name
+	{
+		get{ return mName; }
+		set{ mName = value;	}
+	}
+
+	public int District
+	{
+		get{ return mDistrict; }
+		set{ mDistrict = value; }
+	}
+
+	public Gender TheGender
+	{
+		get{ return mGender; }
+		set{ mGender = value; }
+	}
+
+	public AttributeStats AttribStats
+	{
+		get{ return mAttributeStats; }
+		set{ mAttributeStats = value; }
+	}
+	
+	public int MaxHungerLevel
+	{
+		get	{ return mMaxHungerLevel; }
+		set	{ mMaxHungerLevel = value; }
+	}
+
+	public int CurrentHungerLevel
+	{
+		get { return mCurrentHungerLevel; }
+	}
+
+	public int MaxThirstLevel
+	{
+		get	{ return mMaxThirstLevel; }
+		set	{ mMaxThirstLevel = value; }
+	}
+	
+	public int CurrentThirstLevel
+	{
+		get { return mCurrentThirstLevel; }
+	}
+
 
 	public void UseItem( int idx, Tribute targetTribute )
 	{
@@ -57,6 +106,12 @@ public class Tribute : MonoBehaviour {
 		mInventory.DropItem( idx );
 	}
 
+	public void ApplyItemEffects( Item.ItemEffect effects )
+	{
+		mCurrentHungerLevel += effects.modToHungerLevel;
+		mCurrentThirstLevel += effects.modToThirstLevel;
+	}
+
 	// Use this for initialization
 	void Start () {
 		mCombatant = GetComponent<Combatant>();
@@ -66,7 +121,7 @@ public class Tribute : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if( mCombatant.Health <= 0 )
+		if( mCombatant.CurrentHealth <= 0 )
 		{
 			if( mMover.mDebugSphere != null )
 				Destroy( mMover.mDebugSphere );
