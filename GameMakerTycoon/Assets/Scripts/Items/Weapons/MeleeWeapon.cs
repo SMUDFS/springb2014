@@ -21,7 +21,7 @@ public class MeleeWeapon : Weapon {
 			{
 				Combatant combatant = targetTribute.GetComponent<Combatant>();
 				combatant.TakeDamage( mItemOwner.GetComponent<Combatant>(), attackStats.power );
-				if( combatant.Health <= 0 && targetTribute != mItemOwner )
+				if( combatant.CurrentHealth <= 0 && targetTribute != mItemOwner )
 					mItemOwner.GetComponent<Combatant>().AddToKillCount( 1 );
 				success = true;
 			}

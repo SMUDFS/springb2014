@@ -47,7 +47,7 @@ public class DebugMouseControls : MonoBehaviour {
 				if( loader != null )
 				{
 					Vector3 newTarget = hitInfo.point;
-					newTarget.y = 1.0f;
+					newTarget.y = 3.0f;
 					loader.SpawnWeapon( "Bow", newTarget );
 				}
 			}

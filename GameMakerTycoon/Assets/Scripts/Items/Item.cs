@@ -23,6 +23,7 @@ public class Item : MonoBehaviour {
 		{
 			return mItemEffect;
 		}
+		set{ mItemEffect = value; }
 	}
 
 	public int NumberOfUses
@@ -53,7 +54,16 @@ public class Item : MonoBehaviour {
 	{
 		mItemOwner = newOwner;
 		Renderer renderer = GetComponent<Renderer>();
-		renderer.enabled = false;
+		if( renderer != null )
+			renderer.enabled = false;
+		else
+		{
+			Renderer[] renderers = GetComponentsInChildren<Renderer>();
+			foreach( Renderer r in renderers )
+			{
+				r.enabled = false;
+			}
+		}
 		enabled = false;
 		collider.enabled = false;
 	}
@@ -62,7 +72,16 @@ public class Item : MonoBehaviour {
 	{
 		mItemOwner = null;
 		Renderer renderer = GetComponent<Renderer>();
-		renderer.enabled = true;
+		if( renderer != null )
+			renderer.enabled = true;
+		else
+		{
+			Renderer[] renderers = GetComponentsInChildren<Renderer>();
+			foreach( Renderer r in renderers )
+			{
+				r.enabled = true;
+			}
+		}
 		enabled = true;
 		collider.enabled = true;
 	}
@@ -83,13 +102,11 @@ public class Item : MonoBehaviour {
 
 	protected virtual bool UseItemSubClass( Tribute targetTribute )
 	{
+		if( targetTribute == mItemOwner )
+		{
+			targetTribute.ApplyItemEffects( mItemEffect );
+			return true;
+		}
 		return false;
 	}
-
-	void Update()
-	{
-
-	}
-
-
 }

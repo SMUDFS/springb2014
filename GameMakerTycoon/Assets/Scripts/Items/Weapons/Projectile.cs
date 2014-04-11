@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[RequireComponent (typeof(Rigidbody))]
 public class Projectile : MonoBehaviour {
 
 	private Tribute mTributeThatLaunchedMe;
@@ -64,8 +66,9 @@ public class Projectile : MonoBehaviour {
 		if( target != null )
 		{
 			DealDamageToTarget( target );
-			Destroy( gameObject );
 		}
+		
+		Destroy( gameObject );
 	}
 
 	protected void DealDamageToTarget( Tribute hitTribute )
@@ -74,7 +77,7 @@ public class Projectile : MonoBehaviour {
 		{
 			Combatant combatant = hitTribute.GetComponent<Combatant>();
 			combatant.TakeDamage( mTributeThatLaunchedMe.GetComponent<Combatant>(), mDamageToDeal );
-			if( combatant.Health <= 0 && hitTribute != mTributeThatLaunchedMe )
+			if( combatant.MaxHealth <= 0 && hitTribute != mTributeThatLaunchedMe )
 				mTributeThatLaunchedMe.GetComponent<Combatant>().AddToKillCount( 1 );
 		}
 	}
