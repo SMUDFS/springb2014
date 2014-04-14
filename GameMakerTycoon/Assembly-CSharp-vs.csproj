@@ -46,10 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AccessingObject.cs" />
      <Compile Include="Assets\ActivateStuffScript.cs" />
      <Compile Include="Assets\AddScore.cs" />
      <Compile Include="Assets\CreateLevel.cs" />
+     <Compile Include="Assets\HungerGamesMap.cs" />
+     <Compile Include="Assets\MapObjectList.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -172,6 +173,8 @@
      <Compile Include="Assets\Scripts\DebugMouseControls.cs" />
      <Compile Include="Assets\Scripts\Items\Inventory.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemBlueprint.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemLoader.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\MeleeWeaponBlueprint.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\RangedWeaponBlueprint.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\WeaponBlueprint.cs" />
@@ -181,15 +184,26 @@
      <Compile Include="Assets\Scripts\Items\Weapons\Weapon.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\WeaponLoader.cs" />
      <Compile Include="Assets\Scripts\Tribute\Combatant.cs" />
+     <Compile Include="Assets\Scripts\Tribute\Generator\RandRangeFloat.cs" />
+     <Compile Include="Assets\Scripts\Tribute\Generator\RandRangeInt.cs" />
+     <Compile Include="Assets\Scripts\Tribute\Generator\RandStringPool.cs" />
+     <Compile Include="Assets\Scripts\Tribute\Generator\TributeBlueprint.cs" />
+     <Compile Include="Assets\Scripts\Tribute\Generator\TributeLoader.cs" />
+     <Compile Include="Assets\Scripts\Tribute\Generator\XMLUtils.cs" />
      <Compile Include="Assets\Scripts\Tribute\Mover.cs" />
      <Compile Include="Assets\Scripts\Tribute\Tribute.cs" />
+     <Compile Include="Assets\Scripts\Tribute\TributeSpawner.cs" />
      <Compile Include="Assets\test.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
+     <None Include="Assets\Cartoony Weapon Pack\Readme.txt" />
+     <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\Resources\Weapons.xml" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\Resources\XML\TributeNames.xml" />
      <None Include="Assets\NGUI\Resources\Shaders\GUI - Text Shader (SoftClip).shader" />
+     <None Include="Assets\CustomizableSword_Free\readme.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font (AlphaClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
@@ -200,11 +214,17 @@
      <None Include="Assets\NGUI\Resources\Shaders\GUI - Text Shader (AlphaClip).shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Resources\XML\Items.xml" />
+     <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font (SoftClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (SoftClip).shader" />
+     <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (SoftClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\Resources\XML\Tributes.xml" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font.shader" />
+     <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\NGUI\ReadMe - 2.7.0.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\NGUI\Examples\Other\English.txt" />
@@ -218,6 +238,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\Resources\XML\Weapons.xml" />
+     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\TextureCopy.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>

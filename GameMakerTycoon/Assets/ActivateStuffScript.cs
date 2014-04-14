@@ -46,7 +46,7 @@ public class ActivateStuffScript : MonoBehaviour {
 	////////////////
 	private void HandleInput()
 	{
-		if (Input.GetButtonDown("Fire1")) 
+		if (Input.GetButtonDown("Action")) 
 		{
 			if(!mInputDown)
 			{

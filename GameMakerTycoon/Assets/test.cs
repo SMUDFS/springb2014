@@ -12,4 +12,9 @@ public class test : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnClick()
+	{
+		Debug.Log ("Clicked that shit yo");
+	}
 }

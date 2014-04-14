@@ -10,6 +10,8 @@ public class CreateLevel : MonoBehaviour {
 
 		// Going to want to call a function to creat the level
 
+		GameObject.Find("Table").GetComponent<HungerGamesMap>().Resize(5,5);
+
 		Debug.Log ("Creating level: size=\"" + sizeName + "\"" + "terrain=\"" + terrainName + "\"" );
 	}
 }
