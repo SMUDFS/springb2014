@@ -2,10 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class HungerGamesMap : MonoBehaviour {
+[System.Serializable]
+public class CachedTile
+{
+	public string tileName;
+	public GameObject tilePrefab;
+}
 
+public class HungerGamesMap : MonoBehaviour {
+	//Public
 	public Vector2 mTileDims;
 
+	public CachedTile[] mPossibleTiles;
+
+	//Private
 	private int mNumTilesX = 25;
 	private int mNumTilesZ = 25;
 
@@ -13,9 +23,7 @@ public class HungerGamesMap : MonoBehaviour {
 
 	private BoxCollider mTableCollider;
 
-	private List<GameObject> mTiles;
-
-	private GameObject mCachedForestTile;
+	private List<GameObject> mTiles = new List<GameObject>();
 
 	// Use this for initialization
 	void Start()
@@ -30,18 +38,10 @@ public class HungerGamesMap : MonoBehaviour {
 			mTableMiddlePos = mTableCollider.transform.position + mTableCollider.center;
 			mTableMiddlePos.y += size.y * 0.5f + 0.1f;
 		}
-
-		mTiles = new List<GameObject>();
-
-		mCachedForestTile = Instantiate(Resources.Load("Tiles/Tile_Grass")) as GameObject;
-		if(!mCachedForestTile)
-			Debug.Log("FG");
-
-		Resize(15, 15);
 	}
 
 	// Update is called once per frame
-	void Update() 
+	void Update()
 	{
 
 	}
@@ -59,6 +59,9 @@ public class HungerGamesMap : MonoBehaviour {
 		minPos.x -= numTilesX * mTileDims.x * 0.5f;
 		minPos.z -= numTilesZ * mTileDims.y * 0.5f;
 
+		foreach(GameObject tile in mTiles)
+			Destroy(tile);
+
 		mTiles.Clear();
 		for(int i = 0; i < mNumTilesX; ++i)
 			for(int j = 0; j < mNumTilesZ; ++j)
@@ -68,7 +71,7 @@ public class HungerGamesMap : MonoBehaviour {
 			position.y = mTableMiddlePos.y;
 			position.z += j * mTileDims.y + 0.5f;
 
-			GameObject temp = Instantiate(mCachedForestTile) as GameObject;
+			GameObject temp = Instantiate(mPossibleTiles[0].tilePrefab) as GameObject;
 			temp.transform.position = position;
 			mTiles.Add(temp);
 		}
