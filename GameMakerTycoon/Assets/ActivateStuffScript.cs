@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void StartGUIEvent(GameObject accessedObject);
+
 public class ActivateStuffScript : MonoBehaviour {
 
 	//Basic Stuff
@@ -12,6 +14,8 @@ public class ActivateStuffScript : MonoBehaviour {
 
 	//Accessing Something
 	//
+	public StartGUIEvent mGUIStartFunc = null;
+
 	private bool mIsGoingToObject = false;
 	private bool mIsGoingToPlayer = false;
 	private bool mIsAccessing = false;
@@ -205,6 +209,9 @@ public class ActivateStuffScript : MonoBehaviour {
 		{
 			mapComponent.mTableActivated = true;
 		}
+
+		if(mGUIStartFunc != null)
+			mGUIStartFunc(mAccessingObject);
 	}
 	
 	//Returns true when the camera has arived at the table
