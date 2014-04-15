@@ -15,6 +15,8 @@ public class HungerGamesMap : MonoBehaviour {
 
 	public CachedTile[] mPossibleTiles;
 
+	public bool mTableActivated = false;
+
 	//Private
 	private int mNumTilesX = 25;
 	private int mNumTilesZ = 25;
@@ -48,8 +50,12 @@ public class HungerGamesMap : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		if(Input.GetMouseButtonDown(0))
-			ChangeTile(ref mPossibleTiles[1].tilePrefab);
+
+	}
+
+	public void SetTableActivated(bool val)
+	{
+
 	}
 
 	public void ChangeTile(ref GameObject tilePrefab)
