@@ -19,6 +19,9 @@ public class HungerGamesMap : MonoBehaviour {
 	private int mNumTilesX = 25;
 	private int mNumTilesZ = 25;
 
+	private Vector3 mMinTilesPos;
+	private Vector3 mMaxTilesPos;
+
 	private Vector3 mTableMiddlePos;
 
 	private BoxCollider mTableCollider;
@@ -38,12 +41,41 @@ public class HungerGamesMap : MonoBehaviour {
 			mTableMiddlePos = mTableCollider.transform.position + mTableCollider.center;
 			mTableMiddlePos.y += size.y * 0.5f + 0.1f;
 		}
+
+		Resize(10, 10);
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		if(Input.GetMouseButtonDown(0))
+			ChangeTile(ref mPossibleTiles[1].tilePrefab);
+	}
 
+	public void ChangeTile(ref GameObject tilePrefab)
+	{
+		Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit[] hits = Physics.RaycastAll(cameraRay);
+
+		if(hits != null)
+		{
+			Vector3 hitPos = hits[0].point;
+			int gridX = Mathf.FloorToInt((hitPos.x - mMinTilesPos.x) / mTileDims.x);
+			int gridZ = Mathf.FloorToInt((hitPos.z - mMinTilesPos.z) / mTileDims.y);
+
+			if(gridX >= 0 && gridX < mNumTilesX && gridZ >= 0 && gridZ < mNumTilesZ)
+			{
+				int tileIndex = GetTileIndex(gridX, gridZ);
+
+				if (mTiles[tileIndex].name != string.Format("{0}(Clone)", tilePrefab.name))
+				{
+					Vector3 pos = mTiles[tileIndex].transform.position;
+					Destroy(mTiles[tileIndex]);
+					mTiles[tileIndex] = Instantiate(tilePrefab) as GameObject;
+					mTiles[tileIndex].transform.position = pos;
+				}
+			}
+		}
 	}
 
 	public void Resize(int numTilesX, int numTilesZ)
@@ -55,9 +87,13 @@ public class HungerGamesMap : MonoBehaviour {
 
 		transform.localScale = new Vector3(mNumTilesX * mTileDims.x, yScale, mNumTilesZ * mTileDims.y);
 
-		Vector3 minPos = mTableMiddlePos;
-		minPos.x -= numTilesX * mTileDims.x * 0.5f;
-		minPos.z -= numTilesZ * mTileDims.y * 0.5f;
+		mMinTilesPos = mTableMiddlePos;
+		mMinTilesPos.x -= numTilesX * mTileDims.x * 0.5f;
+		mMinTilesPos.z -= numTilesZ * mTileDims.y * 0.5f;
+
+		mMaxTilesPos = mMinTilesPos;
+		mMaxTilesPos.x += numTilesX * mTileDims.x;
+		mMaxTilesPos.z += numTilesZ * mTileDims.y;
 
 		foreach(GameObject tile in mTiles)
 			Destroy(tile);
@@ -66,7 +102,7 @@ public class HungerGamesMap : MonoBehaviour {
 		for(int i = 0; i < mNumTilesX; ++i)
 			for(int j = 0; j < mNumTilesZ; ++j)
 		{
-			Vector3 position = minPos;
+			Vector3 position = mMinTilesPos;
 			position.x += i * mTileDims.x + 0.5f;
 			position.y = mTableMiddlePos.y;
 			position.z += j * mTileDims.y + 0.5f;
@@ -75,5 +111,10 @@ public class HungerGamesMap : MonoBehaviour {
 			temp.transform.position = position;
 			mTiles.Add(temp);
 		}
+	}
+
+	private int GetTileIndex(int x, int z)
+	{
+		return x * mNumTilesZ + z;
 	}
 }
