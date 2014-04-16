@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\HungerGamesMap.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\UI_TileSelected.cs">
     <Files>
-      <File FileName="Assets\HungerGamesMap.cs" Line="40" Column="4" />
+      <File FileName="Assets\MapObjectList.cs" Line="16" Column="20" />
+      <File FileName="Assets\HungerGamesMap.cs" Line="51" Column="34" />
+      <File FileName="Assets\UI_TileSelected.cs" Line="25" Column="31" />
+      <File FileName="Assets\CreateLevel.cs" Line="25" Column="59" />
+      <File FileName="Assets\ActivateStuffScript.cs" Line="70" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

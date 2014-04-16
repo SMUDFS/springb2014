@@ -261,6 +261,8 @@
      <Compile Include="Assets\Scripts\Tribute\Mover.cs" />
      <Compile Include="Assets\Scripts\Tribute\Tribute.cs" />
      <Compile Include="Assets\Scripts\Tribute\TributeSpawner.cs" />
+     <Compile Include="Assets\UI_TileScript.cs" />
+     <Compile Include="Assets\UI_TileSelected.cs" />
      <Compile Include="Assets\test.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\Cartoony Weapon Pack\Readme.txt" />
@@ -278,7 +280,6 @@
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (AlphaClip) .shader" />
-     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (AlphaClip).shader" />
