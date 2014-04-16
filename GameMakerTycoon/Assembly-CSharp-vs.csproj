@@ -261,6 +261,8 @@
      <Compile Include="Assets\Scripts\Tribute\Mover.cs" />
      <Compile Include="Assets\Scripts\Tribute\Tribute.cs" />
      <Compile Include="Assets\Scripts\Tribute\TributeSpawner.cs" />
+     <Compile Include="Assets\UI_BackButtonObject.cs" />
+     <Compile Include="Assets\UI_CreateLevelScript.cs" />
      <Compile Include="Assets\UI_TileScript.cs" />
      <Compile Include="Assets\UI_TileSelected.cs" />
      <Compile Include="Assets\test.cs" />
