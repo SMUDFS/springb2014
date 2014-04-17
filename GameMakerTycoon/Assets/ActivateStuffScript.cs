@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void StartGUIEvent(GameObject accessedObject);
+
 public class ActivateStuffScript : MonoBehaviour {
 
 	//Basic Stuff
@@ -12,9 +14,13 @@ public class ActivateStuffScript : MonoBehaviour {
 
 	//Accessing Something
 	//
+	public StartGUIEvent mGUIStartFunc = null;
+
 	private bool mIsGoingToObject = false;
 	private bool mIsGoingToPlayer = false;
 	private bool mIsAccessing = false;
+
+	private GameObject mAccessingObject;
 
 	//Lerp Info
 	public float mLerpDurSec;
@@ -46,15 +52,11 @@ public class ActivateStuffScript : MonoBehaviour {
 	////////////////
 	private void HandleInput()
 	{
-		if (Input.GetButtonDown("Fire1")) 
+		if (Input.GetButtonDown("Action")) 
 		{
 			if(!mInputDown)
 			{
-				if(!mIsGoingToObject && mIsAccessing && !mIsGoingToPlayer)
-				{
-					StopAccessingObject();
-				}
-				else
+				if(!mIsAccessing)
 				{
 					Transform camTrans = Camera.main.transform;
 
@@ -105,7 +107,10 @@ public class ActivateStuffScript : MonoBehaviour {
 					lookAtTrans = child.transform;
 
 				if(posTrans && lookAtTrans)
+				{
+					mAccessingObject = someObject;
 					break;
+				}
 			}
 
 			//Get and calculate goal position and rotation
@@ -165,6 +170,16 @@ public class ActivateStuffScript : MonoBehaviour {
 				StoppedAccessingObject();
 			}
 		}
+
+		if(mAccessingObject && !mIsGoingToObject)
+		{
+			HungerGamesMap mapComponent = mAccessingObject.GetComponent<HungerGamesMap>();
+			if(mapComponent && !mapComponent.mTableActivated)
+			{
+				StopAccessingObject();
+				mAccessingObject = null;
+			}
+		}
 	}
 
 	//Going towards object
@@ -189,6 +204,14 @@ public class ActivateStuffScript : MonoBehaviour {
 	private void ArrivedAtObject()
 	{
 		mIsGoingToObject = false;
+		HungerGamesMap mapComponent = mAccessingObject.GetComponent<HungerGamesMap>();
+		if(mapComponent)
+		{
+			mapComponent.mTableActivated = true;
+		}
+
+		if(mGUIStartFunc != null)
+			mGUIStartFunc(mAccessingObject);
 	}
 	
 	//Returns true when the camera has arived at the table
