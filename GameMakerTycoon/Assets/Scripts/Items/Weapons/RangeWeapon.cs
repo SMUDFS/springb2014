@@ -11,10 +11,6 @@ public class RangeWeapon : Weapon {
 	// Use this for initialization
 	void Start()
 	{
-		Combatant.AttackStats attackStats = this.AttackStats;
-		attackStats.power = 100;
-		attackStats.range = 100;
-		this.AttackStats = attackStats;
 	}
 	
 	protected override bool UseItemSubClass( Tribute targetTribute )
@@ -52,6 +48,7 @@ public class RangeWeapon : Weapon {
 				projComp.TributeThatLaunchedMe = mItemOwner;
 				projComp.DamageToDeal = AttackStats.power;
 				projComp.transform.rotation = Quaternion.LookRotation( velocity );
+				Debug.Log( "Proj launched with dmg: " + projComp.DamageToDeal );
 
 				Rigidbody projRigidbody = projectile.rigidbody;
 				if( projRigidbody == null )

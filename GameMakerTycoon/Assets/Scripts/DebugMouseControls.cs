@@ -3,12 +3,16 @@ using System.Collections;
 
 public class DebugMouseControls : MonoBehaviour {
 
-	Tribute mTribute;
+	public Tribute mTribute;
 	Mover mTributeMover;
 
 	// Use this for initialization
 	void Start () {
-		mTribute = FindObjectOfType<Tribute>();
+		if( mTribute ==  null )
+		{
+			mTribute = FindObjectOfType<Tribute>();
+
+		}
 		if( mTribute != null )
 		{
 			mTributeMover = mTribute.GetComponent<Mover>();

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RAIN.Core;
 
 public class Combatant : MonoBehaviour {
 
@@ -79,6 +80,8 @@ public class Combatant : MonoBehaviour {
 	{
 		mCurrentHealth -= damage;
 		Debug.Log( "Damage taken: " + damage );
+		AIRig ai = gameObject.GetComponentInChildren<AIRig>();
+		ai.AI.WorkingMemory.SetItem<float>( "currentHealth", mCurrentHealth );
 	}
 
 	public void AddToKillCount( int count )
