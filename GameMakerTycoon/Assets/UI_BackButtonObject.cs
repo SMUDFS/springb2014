@@ -15,6 +15,6 @@ public class UI_BackButtonObject : MonoBehaviour {
 
 	void OnClick()
 	{
-		GameObject.Find("Table").GetComponent<HungerGamesMap>().mTableActivated = false;
+		GameObject.Find("Table").GetComponent<HungerGamesMap>().mIsBeingAccessed = false;
 	}
 }
