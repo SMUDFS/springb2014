@@ -9,17 +9,13 @@ public class CachedTile
 	public GameObject tilePrefab;
 }
 
-public class HungerGamesMap : MonoBehaviour {
+public class HungerGamesMap : AccessableObject {
 	//Public
-	public Vector2 mTileDims;
-
 	public CachedTile[] mPossibleTiles;
 
-	public bool mTableActivated = false;
-
 	//Private
-	private int mNumTilesX = 25;
-	private int mNumTilesZ = 25;
+	private int mNumTilesX = 15;
+	private int mNumTilesZ = 15;
 
 	private Vector3 mMinTilesPos;
 	private Vector3 mMaxTilesPos;
@@ -44,20 +40,21 @@ public class HungerGamesMap : MonoBehaviour {
 			mTableMiddlePos.y += size.y * 0.5f + 0.1f;
 		}
 
-		Resize(10, 10);
+		Resize(mNumTilesX, mNumTilesZ);
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		//if(Input.GetMouseButtonDown(0))
+		//	ChangeTile(ref mPossibleTiles[2].tilePrefab);
 
+		//if(Input.GetMouseButtonDown(1))
+		//	ChangeTile(ref mPossibleTiles[3].tilePrefab);
+
+		UpdateAccessableObject();
 	}
-
-	public void SetTableActivated(bool val)
-	{
-
-	}
-
+	
 	public void ChangeTile(ref GameObject tilePrefab)
 	{
 		Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -66,8 +63,8 @@ public class HungerGamesMap : MonoBehaviour {
 		if(hits != null)
 		{
 			Vector3 hitPos = hits[0].point;
-			int gridX = Mathf.FloorToInt((hitPos.x - mMinTilesPos.x) / mTileDims.x);
-			int gridZ = Mathf.FloorToInt((hitPos.z - mMinTilesPos.z) / mTileDims.y);
+			int gridX = Mathf.FloorToInt(hitPos.x - mMinTilesPos.x);
+			int gridZ = Mathf.FloorToInt(hitPos.z - mMinTilesPos.z);
 
 			if(gridX >= 0 && gridX < mNumTilesX && gridZ >= 0 && gridZ < mNumTilesZ)
 			{
@@ -75,6 +72,17 @@ public class HungerGamesMap : MonoBehaviour {
 
 				if (mTiles[tileIndex].name != string.Format("{0}(Clone)", tilePrefab.name))
 				{
+					TileInfo oldInfo = mTiles[tileIndex].GetComponent<TileInfo>();
+					TileInfo newInfo = tilePrefab.GetComponent<TileInfo>();
+					if(oldInfo.mBlocksPath && !newInfo.mBlocksPath)
+					{
+						//remove blockage
+					}
+					else if(!oldInfo.mBlocksPath && newInfo.mBlocksPath)
+					{
+						//Add Blockage
+					}
+
 					Vector3 pos = mTiles[tileIndex].transform.position;
 					Destroy(mTiles[tileIndex]);
 					mTiles[tileIndex] = Instantiate(tilePrefab) as GameObject;
@@ -91,15 +99,15 @@ public class HungerGamesMap : MonoBehaviour {
 
 		float yScale = transform.localScale.y;
 
-		transform.localScale = new Vector3(mNumTilesX * mTileDims.x, yScale, mNumTilesZ * mTileDims.y);
+		transform.localScale = new Vector3(mNumTilesX, yScale, mNumTilesZ);
 
 		mMinTilesPos = mTableMiddlePos;
-		mMinTilesPos.x -= numTilesX * mTileDims.x * 0.5f;
-		mMinTilesPos.z -= numTilesZ * mTileDims.y * 0.5f;
+		mMinTilesPos.x -= numTilesX * 0.5f;
+		mMinTilesPos.z -= numTilesZ * 0.5f;
 
 		mMaxTilesPos = mMinTilesPos;
-		mMaxTilesPos.x += numTilesX * mTileDims.x;
-		mMaxTilesPos.z += numTilesZ * mTileDims.y;
+		mMaxTilesPos.x += numTilesX;
+		mMaxTilesPos.z += numTilesZ;
 
 		foreach(GameObject tile in mTiles)
 			Destroy(tile);
@@ -109,12 +117,13 @@ public class HungerGamesMap : MonoBehaviour {
 			for(int j = 0; j < mNumTilesZ; ++j)
 		{
 			Vector3 position = mMinTilesPos;
-			position.x += i * mTileDims.x + 0.5f;
+			position.x += i + 0.5f;
 			position.y = mTableMiddlePos.y;
-			position.z += j * mTileDims.y + 0.5f;
+			position.z += j + 0.5f;
 
 			GameObject temp = Instantiate(mPossibleTiles[0].tilePrefab) as GameObject;
 			temp.transform.position = position;
+
 			mTiles.Add(temp);
 		}
 	}
