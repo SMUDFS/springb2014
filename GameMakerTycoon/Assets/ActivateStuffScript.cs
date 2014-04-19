@@ -83,8 +83,11 @@ public class ActivateStuffScript : MonoBehaviour {
 
 			if(currentCollider && hit.distance < closestDistance)
 			{
-				closestDistance = hit.distance;
-				closestObject = currentCollider.gameObject;
+				if(currentCollider.gameObject.GetComponent<AccessableObject>() != null)
+				{
+					closestDistance = hit.distance;
+					closestObject = currentCollider.gameObject;
+				}
 			}
 		}
 
@@ -173,8 +176,8 @@ public class ActivateStuffScript : MonoBehaviour {
 
 		if(mAccessingObject && !mIsGoingToObject)
 		{
-			HungerGamesMap mapComponent = mAccessingObject.GetComponent<HungerGamesMap>();
-			if(mapComponent && !mapComponent.mTableActivated)
+			AccessableObject component = mAccessingObject.GetComponent<AccessableObject>();
+			if(component && !component.mIsBeingAccessed)
 			{
 				StopAccessingObject();
 				mAccessingObject = null;
@@ -204,10 +207,10 @@ public class ActivateStuffScript : MonoBehaviour {
 	private void ArrivedAtObject()
 	{
 		mIsGoingToObject = false;
-		HungerGamesMap mapComponent = mAccessingObject.GetComponent<HungerGamesMap>();
-		if(mapComponent)
+		AccessableObject component = mAccessingObject.GetComponent<AccessableObject>();
+		if(component)
 		{
-			mapComponent.mTableActivated = true;
+			component.mIsBeingAccessed = true;
 		}
 
 		if(mGUIStartFunc != null)
