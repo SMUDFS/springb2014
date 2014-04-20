@@ -14,8 +14,8 @@ public class HungerGamesMap : AccessableObject {
 	public CachedTile[] mPossibleTiles;
 
 	//Private
-	private int mNumTilesX = 25;
-	private int mNumTilesZ = 25;
+	private int mNumTilesX = 15;
+	private int mNumTilesZ = 15;
 
 	private Vector3 mMinTilesPos;
 	private Vector3 mMaxTilesPos;
@@ -62,7 +62,7 @@ public class HungerGamesMap : AccessableObject {
 	void Update()
 	{
 		//if(Input.GetMouseButtonDown(0))
-		/	ChangeTile(ref mPossibleTiles[2].tilePrefab);
+		//ChangeTile(ref mPossibleTiles[2].tilePrefab);
 
 		//if(Input.GetMouseButtonDown(1))
 		//	ChangeTile(ref mPossibleTiles[3].tilePrefab);
