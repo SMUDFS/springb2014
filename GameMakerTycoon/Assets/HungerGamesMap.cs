@@ -14,8 +14,8 @@ public class HungerGamesMap : AccessableObject {
 	public CachedTile[] mPossibleTiles;
 
 	//Private
-	private int mNumTilesX = 15;
-	private int mNumTilesZ = 15;
+	private int mNumTilesX = 25;
+	private int mNumTilesZ = 25;
 
 	private Vector3 mMinTilesPos;
 	private Vector3 mMaxTilesPos;
@@ -25,6 +25,11 @@ public class HungerGamesMap : AccessableObject {
 	private BoxCollider mTableCollider;
 
 	private List<GameObject> mTiles = new List<GameObject>();
+
+	public GameObject mNavMeshObj;
+	private RAIN.Navigation.NavMesh.NavMeshRig mNavMeshRig;
+	private RAIN.Navigation.NavMesh.NavMesh mNavMesh;
+	private Vector3 mInitialScale;
 
 	// Use this for initialization
 	void Start()
@@ -40,21 +45,40 @@ public class HungerGamesMap : AccessableObject {
 			mTableMiddlePos.y += size.y * 0.5f + 0.1f;
 		}
 
+		mNavMeshRig = mNavMeshObj.GetComponent<RAIN.Navigation.NavMesh.NavMeshRig>();
+
+		if(!mNavMeshRig)
+			Debug.LogError("Missing NavMESH!");
+
+		mInitialScale = mNavMeshRig.transform.localScale;
+
+		mNavMesh = mNavMeshRig.NavMesh;
+
 		Resize(mNumTilesX, mNumTilesZ);
+		RegeneratePathing();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		//if(Input.GetMouseButtonDown(0))
-		//	ChangeTile(ref mPossibleTiles[2].tilePrefab);
+		/	ChangeTile(ref mPossibleTiles[2].tilePrefab);
 
 		//if(Input.GetMouseButtonDown(1))
 		//	ChangeTile(ref mPossibleTiles[3].tilePrefab);
 
 		UpdateAccessableObject();
 	}
-	
+
+	public void RegeneratePathing()
+	{
+		mNavMesh.StartCreatingContours(mNavMeshRig, 4);
+		while(mNavMesh.Creating)
+		{
+			mNavMesh.CreateContours();
+		}
+	}
+
 	public void ChangeTile(ref GameObject tilePrefab)
 	{
 		Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -126,6 +150,9 @@ public class HungerGamesMap : AccessableObject {
 
 			mTiles.Add(temp);
 		}
+
+		mNavMeshRig.transform.localScale = new Vector3(transform.localScale.x, 0.05f, transform.localScale.z);
+                                
 	}
 
 	private int GetTileIndex(int x, int z)
