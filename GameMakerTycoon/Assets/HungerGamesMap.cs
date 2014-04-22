@@ -54,18 +54,21 @@ public class HungerGamesMap : AccessableObject {
 
 		mNavMesh = mNavMeshRig.NavMesh;
 
-		Resize(mNumTilesX, mNumTilesZ);
+		Resize(mNumTilesX, mNumTilesZ, "Forest");
 		RegeneratePathing();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		//if(Input.GetMouseButtonDown(0))
-		//ChangeTile(ref mPossibleTiles[2].tilePrefab);
+		if(Input.GetMouseButtonDown(0))
+			ChangeTile(ref mPossibleTiles[2].tilePrefab);
 
-		//if(Input.GetMouseButtonDown(1))
-		//	ChangeTile(ref mPossibleTiles[3].tilePrefab);
+		if(Input.GetMouseButtonDown(1))
+		{
+			ChangeTile(ref mPossibleTiles[3].tilePrefab);
+			RegeneratePathing();
+		}
 
 		UpdateAccessableObject();
 	}
@@ -116,7 +119,7 @@ public class HungerGamesMap : AccessableObject {
 		}
 	}
 
-	public void Resize(int numTilesX, int numTilesZ)
+	public void Resize(int numTilesX, int numTilesZ, string name)
 	{
 		mNumTilesX = numTilesX;
 		mNumTilesZ = numTilesZ;
@@ -137,6 +140,8 @@ public class HungerGamesMap : AccessableObject {
 			Destroy(tile);
 
 		mTiles.Clear();
+
+		GameObject tilePrefab = GetTilePrefabByName(name);
 		for(int i = 0; i < mNumTilesX; ++i)
 			for(int j = 0; j < mNumTilesZ; ++j)
 		{
@@ -145,7 +150,7 @@ public class HungerGamesMap : AccessableObject {
 			position.y = mTableMiddlePos.y;
 			position.z += j + 0.5f;
 
-			GameObject temp = Instantiate(mPossibleTiles[0].tilePrefab) as GameObject;
+			GameObject temp = Instantiate(tilePrefab) as GameObject;
 			temp.transform.position = position;
 
 			mTiles.Add(temp);
@@ -153,6 +158,19 @@ public class HungerGamesMap : AccessableObject {
 
 		mNavMeshRig.transform.localScale = new Vector3(transform.localScale.x, 0.05f, transform.localScale.z);
                                 
+	}
+
+	private GameObject GetTilePrefabByName(string name)
+	{
+		foreach(CachedTile cacheTile in mPossibleTiles)
+		{
+			if(cacheTile.tileName == name)
+			{
+				return cacheTile.tilePrefab;
+			}
+		}
+
+		return null;
 	}
 
 	private int GetTileIndex(int x, int z)
