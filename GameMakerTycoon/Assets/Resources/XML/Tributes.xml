@@ -1,9 +1,9 @@
-<Tributes>
+<Tributes maxAttribute="">
 	<Tribute district="1,2,3,4">
 		<AttributeStats>
 			<Intelligence>10~20</Intelligence>
 			<Aggressiveness>10~20</Aggressiveness>
-			<Resourcefulness>10~20</Resourcefulness>
+			<Resourcefulness>15~20</Resourcefulness>
 			<Cooperativeness>10~20</Cooperativeness>
 			<Courage>10~20</Courage>
 			<Charisma>10~20</Charisma>

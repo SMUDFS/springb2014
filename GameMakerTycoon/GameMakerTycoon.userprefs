@@ -1,14 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\UI_CreateLevelScript.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\XML\Weapons.xml">
     <Files>
-      <File FileName="Assets\MapObjectList.cs" Line="16" Column="20" />
-      <File FileName="Assets\HungerGamesMap.cs" Line="1" Column="1" />
-      <File FileName="Assets\UI_TileSelected.cs" Line="1" Column="1" />
-      <File FileName="Assets\CreateLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets\UI_TileScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\ActivateStuffScript.cs" Line="4" Column="63" />
-      <File FileName="Assets\UI_CreateLevelScript.cs" Line="20" Column="31" />
+      <File FileName="Assets\Resources\XML\Tributes.xml" Line="1" Column="25" />
+      <File FileName="Assets\Resources\XML\TributeNames.xml" Line="19" Column="3" />
+      <File FileName="Assets\Resources\XML\Weapons.xml" Line="11" Column="11" />
+      <File FileName="Assets\Resources\XML\Items.xml" Line="3" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
