@@ -38,7 +38,7 @@ public class RangeWeapon : Weapon {
 
 	protected void LaunchProjectile( Vector3 velocity )
 	{
-		GameObject projectile = GameObject.Instantiate( mProjectilePrefab, mItemOwner.mItemUseAnchorPoint.position, mItemOwner.mItemUseAnchorPoint.rotation ) as GameObject;
+		GameObject projectile = GameObject.Instantiate( mProjectilePrefab, mItemOwner.mItemUseAnchorPoint.position, Quaternion.identity ) as GameObject;
 		if( projectile != null )
 		{
 			Debug.Log( "Firing Proj" );
@@ -47,7 +47,9 @@ public class RangeWeapon : Weapon {
 			{
 				projComp.TributeThatLaunchedMe = mItemOwner;
 				projComp.DamageToDeal = AttackStats.power;
-				projComp.transform.rotation = Quaternion.LookRotation( velocity );
+				projComp.transform.rotation = Quaternion.LookRotation( velocity.normalized );
+				float halfWidth = projComp.gameObject.collider.bounds.extents.magnitude;
+				projComp.transform.position += halfWidth * velocity.normalized;
 				Debug.Log( "Proj launched with dmg: " + projComp.DamageToDeal );
 
 				Rigidbody projRigidbody = projectile.rigidbody;
@@ -56,8 +58,7 @@ public class RangeWeapon : Weapon {
 					projRigidbody = projectile.AddComponent<Rigidbody>();
 				}
 				projRigidbody.useGravity = true;
-
-				projRigidbody.transform.rotation = Quaternion.LookRotation( velocity );
+				
 
 				projRigidbody.velocity = velocity;
 			}

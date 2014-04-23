@@ -67,8 +67,8 @@ public class Projectile : MonoBehaviour {
 		{
 			DealDamageToTarget( target );
 		}
-		
 		Destroy( gameObject );
+
 	}
 
 	protected void DealDamageToTarget( Tribute hitTribute )

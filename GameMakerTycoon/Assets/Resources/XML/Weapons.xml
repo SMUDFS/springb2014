@@ -1,9 +1,9 @@
 <Weapons>
-	<Weapon name="Bow" type="ranged" ammo="5" projName="Arrow" prefabName="Bow">
+	<Weapon name="Bow" type="ranged" ammo="-1" projName="Arrow" prefabName="Bow">
 		<Power>60</Power>
 		<Speed>1</Speed>
 		<Range>50</Range>
-		<ProjSpeed>10</ProjSpeed>
+		<ProjSpeed>20</ProjSpeed>
 	</Weapon>
 	<Weapon name="Sword" type="melee" ammo="-1" prefabName="Broadsword">
 		<Power>50</Power>

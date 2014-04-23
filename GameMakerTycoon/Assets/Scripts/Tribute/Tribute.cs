@@ -112,6 +112,12 @@ public class Tribute : MonoBehaviour {
 		mCurrentThirstLevel += effects.modToThirstLevel;
 	}
 
+	public Inventory TheInventory
+	{
+		get{ return mInventory; }
+	}
+	
+
 	// Use this for initialization
 	void Start () {
 		mCombatant = GetComponent<Combatant>();

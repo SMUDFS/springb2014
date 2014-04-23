@@ -35,4 +35,19 @@ public class Inventory {
 			mItems.RemoveAt( idx );
 		}
 	}
+
+	public Item.ItemEffect GetItemEffect( int idx )
+	{
+		Item.ItemEffect effect = new Item.ItemEffect();
+		if( idx >= 0 && idx < mItems.Count )
+		{
+			effect = mItems[ idx ].Effect;
+		}
+		return effect;
+	}
+
+	public int Count
+	{
+		get { return mItems.Count; }
+	}
 }
