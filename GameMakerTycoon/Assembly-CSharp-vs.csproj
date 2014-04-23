@@ -49,6 +49,7 @@
      <Compile Include="Assets\AI\Actions\PickItemToUseOnTarget.cs" />
      <Compile Include="Assets\AI\Actions\UseItem.cs" />
      <Compile Include="Assets\AccessableObject.cs" />
+     <Compile Include="Assets\AccessableObject.cs" />
      <Compile Include="Assets\ActivateStuffScript.cs" />
      <Compile Include="Assets\AddScore.cs" />
      <Compile Include="Assets\CreateLevel.cs" />

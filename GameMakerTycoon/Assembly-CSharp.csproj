@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AccessableObject.cs" />
      <Compile Include="Assets\AI\Actions\PickItemToUseOnTarget.cs" />
      <Compile Include="Assets\AI\Actions\UseItem.cs" />
      <Compile Include="Assets\AccessableObject.cs" />

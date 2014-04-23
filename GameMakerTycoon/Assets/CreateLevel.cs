@@ -22,7 +22,9 @@ public class CreateLevel : MonoBehaviour {
 
 		// Going to want to call a function to creat the level
 		Vector2 size = mSizeTable[sizeName];
-		GameObject.Find("Table").GetComponent<HungerGamesMap>().Resize((int)size.x, (int)size.y, "Desert");
+
+		//GameObject.Find("Table").GetComponent<HungerGamesMap>()
+		GameObject.Find("Table").GetComponent<HungerGamesMap>().Resize((int)size.x, (int)size.y, terrainName);
 
 		Debug.Log ("Creating level: size=\"" + sizeName + "\"" + "terrain=\"" + terrainName + "\"" );
 	}
