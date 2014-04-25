@@ -22,6 +22,7 @@ public class Tribute : MonoBehaviour {
 		public int courage;
 		public int charisma;
 		public int hungerBAScore;
+		public int maxAttribScore;
 	};
 
 	public Transform mItemUseAnchorPoint;

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RAIN.Core;
+using RAIN.Perception;
 
 public class TributeBlueprint {
 
@@ -11,6 +13,7 @@ public class TributeBlueprint {
 		public RandRangeInt cooperativeness;
 		public RandRangeInt courage;
 		public RandRangeInt charisma;
+		public int maxAttribScore;
 	};
 
 	public class Movement
@@ -90,6 +93,7 @@ public class TributeBlueprint {
 				aStats.cooperativeness = mAttributeStats.cooperativeness.GetRandNum();
 				aStats.courage = mAttributeStats.courage.GetRandNum();
 				aStats.charisma = mAttributeStats.charisma.GetRandNum();
+				aStats.maxAttribScore = mAttributeStats.maxAttribScore;
 
 				tribComp.AttribStats = aStats;
 				tribComp.District = district;
@@ -105,6 +109,19 @@ public class TributeBlueprint {
 				cStats.speed = mCombatStats.speed.GetRandNum();
 				combComp.BaseAttack = cStats;
 				combComp.MaxHealth = mCombatStats.maxHealth.GetRandNum();
+
+				AIRig ai = tribute.GetComponentInChildren<AIRig>();
+
+				if( ai != null )
+				{
+					ai.AI.Motor.DefaultSpeed = moverComp.MovementSpeed;
+					ai.AI.Motor.DefaultRotationSpeed = moverComp.TurnSpeed;
+					( ai.AI.Senses.GetSensor( "ears" ) as RAIN.Perception.Sensors.AudioSensor ).Range  = moverComp.VisionRange;
+					( ai.AI.Senses.GetSensor( "eyes" ) as RAIN.Perception.Sensors.VisualSensor ).Range  = moverComp.VisionRange;
+					ai.AI.Motor.DefaultCloseEnoughDistance = tribute.renderer.bounds.size.z * 2;
+					Debug.Log( "Default close distance: " +  ai.AI.Motor.DefaultCloseEnoughDistance );
+				}
+
 			}
 
 		}

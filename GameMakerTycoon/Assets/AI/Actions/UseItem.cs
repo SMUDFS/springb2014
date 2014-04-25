@@ -24,9 +24,14 @@ public class UseItem : RAINAction
 		{
 			int currentItemIdx = ai.WorkingMemory.GetItem<int>( "currentItemIdxToUse" );
 			GameObject targetTribute = ai.WorkingMemory.GetItem<GameObject>( "varTribute" );
-			if( currentItemIdx != -1 )
+			if( currentItemIdx != -1 && targetTribute != null )
 			{
-				tribComp.UseItem( currentItemIdx, targetTribute.GetComponent<Tribute>() );
+				Vector3 deltaToTarget = targetTribute.transform.position - ai.Body.transform.position;  
+				float itemRange = tribComp.TheInventory.GetItem( currentItemIdx ).ItemRange;
+				if( deltaToTarget.sqrMagnitude <= itemRange * itemRange )
+				{
+					tribComp.UseItem( currentItemIdx, targetTribute.GetComponent<Tribute>() );
+				}
 			}
 		}
 

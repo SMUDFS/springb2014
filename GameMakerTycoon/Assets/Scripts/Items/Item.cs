@@ -100,6 +100,15 @@ public class Item : MonoBehaviour {
 		return success;
 	}
 
+	public virtual float ItemRange
+	{
+		get
+		{
+			return 0.0f;
+		}
+	}
+	                   
+
 	protected virtual bool UseItemSubClass( Tribute targetTribute )
 	{
 		if( targetTribute == mItemOwner )

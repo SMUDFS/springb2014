@@ -64,6 +64,10 @@ public class TributeLoader : MonoBehaviour {
 		XmlDocument doc = new XmlDocument();
 		doc.LoadXml( mTributeXML.text );
 				
+		int maxAttribScore = 20;
+		int.TryParse( doc.DocumentElement.SelectSingleNode("/Tributes" ).Attributes[ "maxAttributeStatScore" ].Value, out maxAttribScore );
+
+
 		XmlNodeList tributeNodes = doc.DocumentElement.SelectNodes( "/Tributes/Tribute" );
 
 		foreach( XmlNode tributeNode in tributeNodes )
@@ -78,6 +82,7 @@ public class TributeLoader : MonoBehaviour {
 			aStats.cooperativeness = XMLUtils.GetXMLPCDataAsRandRangeInt( tributeNode.SelectSingleNode( "AttributeStats/Cooperativeness" ) );
 			aStats.courage = XMLUtils.GetXMLPCDataAsRandRangeInt( tributeNode.SelectSingleNode( "AttributeStats/Courage" ) );
 			aStats.charisma = XMLUtils.GetXMLPCDataAsRandRangeInt( tributeNode.SelectSingleNode( "AttributeStats/Charisma" ) );
+			aStats.maxAttribScore = maxAttribScore;
 
 			TributeBlueprint.Movement mStats = new TributeBlueprint.Movement();
 			mStats.visionRange = XMLUtils.GetXMLPCDataAsRandRangeFloat( tributeNode.SelectSingleNode( "Movement/VisionRange" ) );

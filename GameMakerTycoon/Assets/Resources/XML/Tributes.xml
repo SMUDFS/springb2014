@@ -1,4 +1,4 @@
-<Tributes maxAttribute="">
+<Tributes maxAttributeStatScore="30">
 	<Tribute district="1,2,3,4">
 		<AttributeStats>
 			<Intelligence>10~20</Intelligence>
@@ -11,13 +11,14 @@
 		<Movement>
 			<VisionRange>25~30</VisionRange>
 			<MovementSpeed>5~10</MovementSpeed>
-			<TurnSpeed>6~8</TurnSpeed>
+			<!--degrees/sec-->
+			<TurnSpeed>150~180</TurnSpeed>
 		</Movement>	
 		<CombatStats>
 			<Power>10~15</Power>
 			<Speed>0.2~0.5</Speed>
 			<Range>15~20</Range>
-			<MaxHealth>100~120</MaxHealth>
+			<MaxHealth>100~100</MaxHealth>
 		</CombatStats>
 	</Tribute>
 </Tributes>

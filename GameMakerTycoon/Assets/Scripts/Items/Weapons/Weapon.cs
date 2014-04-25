@@ -19,4 +19,12 @@ public class Weapon : Item {
 			mItemEffect.modToHealth = -mAttackStats.power;
 		}
 	}
+
+	public override float ItemRange
+	{
+		get
+		{
+			return mAttackStats.range;
+		}
+	}
 }

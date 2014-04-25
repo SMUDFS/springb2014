@@ -16,7 +16,14 @@ public class Inventory {
 	public void UseItem( int idx, Tribute targetTribute )
 	{
 		if( idx >= 0 && idx < mItems.Count )
+		{
 			mItems[ idx ].UseItem( targetTribute );
+			if( mItems[ idx ].NumberOfUses == 0 )
+			{
+				GameObject.Destroy( mItems[ idx ] );
+				mItems.RemoveAt( idx );
+			}
+		}
 	}
 	
 	public void PickupItem( Item item )
@@ -49,5 +56,17 @@ public class Inventory {
 	public int Count
 	{
 		get { return mItems.Count; }
+	}
+
+	public Item GetItem( int idx )
+	{
+		if( idx >= 0 && idx < mItems.Count )
+		{
+			return mItems[ idx ];
+		}
+		else
+		{
+			return null;
+		}
 	}
 }
