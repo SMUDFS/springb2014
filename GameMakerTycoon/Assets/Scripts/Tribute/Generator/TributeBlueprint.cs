@@ -83,7 +83,6 @@ public class TributeBlueprint {
 			Tribute tribComp = tribute.GetComponent<Tribute>();
 			if( tribComp != null )
 			{
-				Mover moverComp = tribute.GetComponent<Mover>();
 				Combatant combComp = tribute.GetComponent<Combatant>();
 
 				Tribute.AttributeStats aStats = new Tribute.AttributeStats();
@@ -99,9 +98,9 @@ public class TributeBlueprint {
 				tribComp.District = district;
 				tribComp.TheGender = gender;
 
-				moverComp.MovementSpeed = mMovement.movementSpeed.GetRandNum();
-				moverComp.TurnSpeed = mMovement.turnSpeed.GetRandNum();
-				moverComp.VisionRange = mMovement.visionRange.GetRandNum();
+				tribComp.MovementSpeed = mMovement.movementSpeed.GetRandNum();
+				tribComp.TurnSpeed = mMovement.turnSpeed.GetRandNum();
+				tribComp.VisionRange = mMovement.visionRange.GetRandNum();
 
 				Combatant.AttackStats cStats = new Combatant.AttackStats();
 				cStats.power = mCombatStats.power.GetRandNum();
@@ -114,11 +113,11 @@ public class TributeBlueprint {
 
 				if( ai != null )
 				{
-					ai.AI.Motor.DefaultSpeed = moverComp.MovementSpeed;
-					ai.AI.Motor.DefaultRotationSpeed = moverComp.TurnSpeed;
-					( ai.AI.Senses.GetSensor( "ears" ) as RAIN.Perception.Sensors.AudioSensor ).Range  = moverComp.VisionRange;
-					( ai.AI.Senses.GetSensor( "eyes" ) as RAIN.Perception.Sensors.VisualSensor ).Range  = moverComp.VisionRange;
-					ai.AI.Motor.DefaultCloseEnoughDistance = tribute.renderer.bounds.size.z * 2;
+					ai.AI.Motor.DefaultSpeed = tribComp.MovementSpeed;
+					ai.AI.Motor.DefaultRotationSpeed = tribComp.TurnSpeed;
+					( ai.AI.Senses.GetSensor( "ears" ) as RAIN.Perception.Sensors.AudioSensor ).Range  = tribComp.VisionRange;
+					( ai.AI.Senses.GetSensor( "eyes" ) as RAIN.Perception.Sensors.VisualSensor ).Range  = tribComp.VisionRange;
+					ai.AI.Motor.DefaultCloseEnoughDistance = tribute.renderer.bounds.size.z;
 					Debug.Log( "Default close distance: " +  ai.AI.Motor.DefaultCloseEnoughDistance );
 				}
 

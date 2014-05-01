@@ -9,7 +9,7 @@
 			<Charisma>10~20</Charisma>
 		</AttributeStats>
 		<Movement>
-			<VisionRange>25~30</VisionRange>
+			<VisionRange>5~10</VisionRange>
 			<MovementSpeed>5~10</MovementSpeed>
 			<!--degrees/sec-->
 			<TurnSpeed>150~180</TurnSpeed>

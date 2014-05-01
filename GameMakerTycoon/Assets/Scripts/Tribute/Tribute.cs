@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent (typeof(Combatant))]
-[RequireComponent (typeof(Mover))]
 [RequireComponent (typeof(Rigidbody))]
 public class Tribute : MonoBehaviour {
 
@@ -39,9 +38,14 @@ public class Tribute : MonoBehaviour {
 	private int mMaxThirstLevel;
 	private int mCurrentThirstLevel;
 
+	private float mMovementSpeed = 1.0f;
+	private float mTurnSpeed = 1.0f;
+	
+	private float mVisionRange;
+
 
 	private Combatant mCombatant;
-	private Mover mMover;
+
 
 	private Inventory mInventory;
 
@@ -91,6 +95,29 @@ public class Tribute : MonoBehaviour {
 		get { return mCurrentThirstLevel; }
 	}
 
+	public float MovementSpeed
+	{
+		get
+		{
+			return mMovementSpeed;
+		}
+		set
+		{
+			mMovementSpeed = value;
+		}
+	}
+	
+	public float TurnSpeed
+	{
+		get	{ return mTurnSpeed; }
+		set { mTurnSpeed = value; }
+	}
+	
+	public float VisionRange
+	{
+		get{ return mVisionRange; }
+		set{ mVisionRange = value; }
+	}
 
 	public void UseItem( int idx, Tribute targetTribute )
 	{
@@ -122,7 +149,6 @@ public class Tribute : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mCombatant = GetComponent<Combatant>();
-		mMover = GetComponent<Mover>();
 		mInventory = new Inventory( this );
 	}
 	
@@ -130,8 +156,6 @@ public class Tribute : MonoBehaviour {
 	void Update () {
 		if( mCombatant.CurrentHealth <= 0 )
 		{
-			if( mMover.mDebugSphere != null )
-				Destroy( mMover.mDebugSphere );
 			Destroy( gameObject );
 		}
 	}
