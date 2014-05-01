@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using RAIN.Core;
+using RAIN.Entities;
 
 public class MeleeWeaponBlueprint : WeaponBlueprint
 {
@@ -16,6 +18,12 @@ public class MeleeWeaponBlueprint : WeaponBlueprint
 		weaponComp.AttackStats = this.AttackStats;
 		weaponComp.NumberOfUses = this.Ammo;
 		weaponComp.Name = this.Name;
+
+		GameObject entity = GameObject.Instantiate( Resources.Load( "Items/ItemEntity", typeof(GameObject) ) ) as GameObject;
+		entity.transform.parent = weapon.transform;
+		
+		EntityRig entityRig = entity.GetComponent<EntityRig>();
+		entityRig.Entity.Form = weapon;
 
 		return weapon;
 	}

@@ -9,6 +9,8 @@
 //------------------------------------------------------------------------------
 using UnityEngine;
 using System;
+using RAIN.Core;
+using RAIN.Entities;
 
 public class RangedWeaponBlueprint : WeaponBlueprint
 {
@@ -54,6 +56,14 @@ public class RangedWeaponBlueprint : WeaponBlueprint
 		weaponComp.Name = this.Name;
 		weaponComp.mProjectilePrefab = Resources.Load( "Items/Weapons/" + this.ProjPrefabName, typeof( GameObject ) ) as GameObject;
 		weaponComp.mProjectileSpeed = mProjSpeed;
+
+		GameObject entity = GameObject.Instantiate( Resources.Load( "Items/ItemEntity", typeof(GameObject) ) ) as GameObject;
+		entity.transform.parent = weapon.transform;
+		
+		EntityRig entityRig = entity.GetComponent<EntityRig>();
+		entityRig.Entity.Form = weapon;
+
+
 		return weapon;
 	}
 }

@@ -22,6 +22,7 @@ public class Tribute : MonoBehaviour {
 		public int courage;
 		public int charisma;
 		public int hungerBAScore;
+		public int maxAttribScore;
 	};
 
 	public Transform mItemUseAnchorPoint;
@@ -111,6 +112,12 @@ public class Tribute : MonoBehaviour {
 		mCurrentHungerLevel += effects.modToHungerLevel;
 		mCurrentThirstLevel += effects.modToThirstLevel;
 	}
+
+	public Inventory TheInventory
+	{
+		get{ return mInventory; }
+	}
+	
 
 	// Use this for initialization
 	void Start () {

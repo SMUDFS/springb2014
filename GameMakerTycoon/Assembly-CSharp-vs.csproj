@@ -46,8 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI\Actions\PickItemToUseOnTarget.cs" />
+     <Compile Include="Assets\AI\Actions\UseItem.cs" />
      <Compile Include="Assets\AccessableObject.cs" />
      <Compile Include="Assets\ActivateStuffScript.cs" />
+     <Compile Include="Assets\AddMonitorUI.cs" />
      <Compile Include="Assets\AddScore.cs" />
      <Compile Include="Assets\CreateLevel.cs" />
      <Compile Include="Assets\HungerGamesMap.cs" />
@@ -176,6 +179,7 @@
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Items\ItemBlueprint.cs" />
      <Compile Include="Assets\Scripts\Items\ItemLoader.cs" />
+     <Compile Include="Assets\Scripts\Items\WeaponSpawner.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\MeleeWeaponBlueprint.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\RangedWeaponBlueprint.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\WeaponBlueprint.cs" />
@@ -197,6 +201,8 @@
      <Compile Include="Assets\Tiles\TileInfo.cs" />
      <Compile Include="Assets\UI_BackButtonObject.cs" />
      <Compile Include="Assets\UI_CreateLevelScript.cs" />
+     <Compile Include="Assets\UI_MonitorText.cs" />
+     <Compile Include="Assets\UI_PlayButton.cs" />
      <Compile Include="Assets\UI_TileScript.cs" />
      <Compile Include="Assets\UI_TileSelected.cs" />
      <Compile Include="Assets\test.cs" />
