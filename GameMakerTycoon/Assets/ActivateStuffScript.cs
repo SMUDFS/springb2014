@@ -81,6 +81,7 @@ public class ActivateStuffScript : MonoBehaviour {
 			RaycastHit hit = hits[i];
 			Collider currentCollider = hit.collider;
 
+			//Get closest collider that is an AccessableObject
 			if(currentCollider && hit.distance < closestDistance)
 			{
 				if(currentCollider.gameObject.GetComponent<AccessableObject>() != null)
