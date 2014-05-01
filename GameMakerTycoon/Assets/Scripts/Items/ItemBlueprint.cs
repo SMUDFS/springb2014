@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RAIN.Core;
+using RAIN.Entities;
 
 public class ItemBlueprint {
 
@@ -46,6 +48,13 @@ public class ItemBlueprint {
 		effect.modToHealth = mEffects.modToHealth.GetRandNum();
 		effect.modToHungerLevel = mEffects.modToHunger.GetRandNum();
 		effect.modToThirstLevel = mEffects.modToThirst.GetRandNum();
+
+		GameObject entity = GameObject.Instantiate( Resources.Load( "Items/ItemEntity", typeof(GameObject) ) ) as GameObject;
+		entity.transform.parent = item.transform;
+
+		EntityRig entityRig = entity.GetComponent<EntityRig>();
+		entityRig.Entity.Form = item;
+
 
 		itemComp.Effect = effect;
 		return item;
