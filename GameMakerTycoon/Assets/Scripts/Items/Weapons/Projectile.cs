@@ -82,6 +82,8 @@ public class Projectile : MonoBehaviour {
 			if( mTributeThatLaunchedMe )
 				combatantThathitMe = mTributeThatLaunchedMe.GetComponent<Combatant>();
 
+			combatant.TakeDamage( combatantThathitMe, mDamageToDeal );
+
 			if( combatant.MaxHealth <= 0 && mTributeThatLaunchedMe != null && hitTribute != mTributeThatLaunchedMe)
 				mTributeThatLaunchedMe.GetComponent<Combatant>().AddToKillCount( 1 );
 		}
