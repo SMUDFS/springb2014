@@ -6,6 +6,8 @@ public class MapObjectList : MonoBehaviour {
 	
 	public List<GameObject> RootObjects = new List<GameObject>();
 	private Dictionary<string, int> mNameToIndex = new Dictionary<string, int>();
+	private string mLastSelection="asdf";
+	private bool mIsClosing=false;
 
 	// Use this for initialization
 	void Start ()
@@ -19,8 +21,22 @@ public class MapObjectList : MonoBehaviour {
 		}
 	}
 
-	void OnSelectionChange(string selectedItem)
+	void InitSelection()
 	{
+		Debug.Log("LastSelect: "+mLastSelection);
+		if (!mIsClosing)
+		{
+			OnSelectionChange(mLastSelection);
+		}
+		mIsClosing = !mIsClosing;
+	}
+
+	public void OnSelectionChange(string selectedItem)
+	{
+		if (selectedItem != null && selectedItem != "")
+			mLastSelection = selectedItem;
+
+
 		// Try to get the group with the selected tag
 		GameObject activeRoot = null;
 		int index = 0;

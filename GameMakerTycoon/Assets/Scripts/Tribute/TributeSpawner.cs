@@ -23,6 +23,11 @@ public class TributeSpawner : MonoBehaviour {
 				GameObject tribute = loader.SpawnTribute( mDistrict, mGender );
 				if( tribute != null )
 				{
+					AddMonitorUI monitors = FindObjectOfType<AddMonitorUI>();
+					if ( monitors != null )
+					{
+						monitors.AddTribute( tribute.GetComponent<Tribute>() );
+					}
 					tribute.transform.position = gameObject.transform.position;
 					Debug.Log( "Tribute Spawned: Name: " + tribute.GetComponent<Tribute>().Name +" District: " + mDistrict );
 				}
