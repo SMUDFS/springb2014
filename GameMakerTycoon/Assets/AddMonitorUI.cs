@@ -32,7 +32,8 @@ public class AddMonitorUI : MonoBehaviour {
 		monitorList.RemoveAt(size-1);
 
 		// Assign this monitor to the tribute
-		monitor.GetComponent<UI_MonitorText>().SetTribute( t );
+		monitor.GetComponentInChildren<UI_MonitorText>().SetTribute( t );
+		Debug.Log("added tribute to monitor ui");
 	}
 
 	// Use this for initialization
@@ -50,7 +51,7 @@ public class AddMonitorUI : MonoBehaviour {
 			string[] tok = monitor.name.Split(new char[]{'_'});
 			if ( tok[1] == "Boy" )
 			{
-				//Debug.Log(monitor.name + " It's a boy!");
+				Debug.Log(monitor.name + " It's a boy!");
 				mBoyMonitors.Add(monitor);
 			}
 			else
