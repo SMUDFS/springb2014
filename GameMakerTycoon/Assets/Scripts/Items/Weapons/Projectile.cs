@@ -67,8 +67,9 @@ public class Projectile : MonoBehaviour {
 		{
 			DealDamageToTarget( target );
 		}
-		Destroy( gameObject );
 
+		if( mTributeThatLaunchedMe || target != null )
+			Destroy( gameObject );
 	}
 
 	protected void DealDamageToTarget( Tribute hitTribute )
@@ -76,7 +77,13 @@ public class Projectile : MonoBehaviour {
 		if( hitTribute != mTributeThatLaunchedMe )
 		{
 			Combatant combatant = hitTribute.GetComponent<Combatant>();
-			combatant.TakeDamage( mTributeThatLaunchedMe.GetComponent<Combatant>(), mDamageToDeal );
+			Combatant combatantThathitMe = null;
+			
+			if( mTributeThatLaunchedMe )
+				combatantThathitMe = mTributeThatLaunchedMe.GetComponent<Combatant>();
+
+			combatant.TakeDamage( combatantThathitMe, mDamageToDeal );
+
 			if( combatant.MaxHealth <= 0 && mTributeThatLaunchedMe != null && hitTribute != mTributeThatLaunchedMe)
 				mTributeThatLaunchedMe.GetComponent<Combatant>().AddToKillCount( 1 );
 		}

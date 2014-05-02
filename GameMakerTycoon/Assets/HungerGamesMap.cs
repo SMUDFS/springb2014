@@ -29,7 +29,6 @@ public class HungerGamesMap : AccessableObject {
 	public GameObject mNavMeshObj;
 	private RAIN.Navigation.NavMesh.NavMeshRig mNavMeshRig;
 	private RAIN.Navigation.NavMesh.NavMesh mNavMesh;
-	private Vector3 mInitialScale;
 
 	// Use this for initialization
 	void Start()
@@ -50,8 +49,6 @@ public class HungerGamesMap : AccessableObject {
 		if(!mNavMeshRig)
 			Debug.LogError("Missing NavMESH!");
 
-		mInitialScale = mNavMeshRig.transform.localScale;
-
 		mNavMesh = mNavMeshRig.NavMesh;
 
 		Resize(mNumTilesX, mNumTilesZ, "Forest");
@@ -71,8 +68,24 @@ public class HungerGamesMap : AccessableObject {
 		}
 
 		UpdateAccessableObject();
+
+		if(Input.GetMouseButtonDown(0))
+		{
+			Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit[] hits = Physics.RaycastAll(cameraRay);
+			foreach(RaycastHit hit in hits)
+			{
+				Trap trap = hit.collider.gameObject.GetComponent<Trap>();
+				if(trap != null)
+					trap.Trigger();
+			}
+		}
 	}
 
+
+	///////////////////////////////////////////////////////////////
+	/// Map Editing Functions
+	///////////////////////////////////////////////////////////////
 	public void RegeneratePathing()
 	{
 		mNavMesh.StartCreatingContours(mNavMeshRig, 4);
