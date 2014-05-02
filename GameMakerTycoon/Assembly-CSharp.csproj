@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AI\Actions\PickItemToUseOnTarget.cs" />
+     <Compile Include="Assets\AI\Actions\PickLocationToRunFromTargetTo.cs" />
+     <Compile Include="Assets\AI\Actions\ShouldRunOrFight.cs" />
      <Compile Include="Assets\AI\Actions\UseItem.cs" />
      <Compile Include="Assets\AccessableObject.cs" />
      <Compile Include="Assets\ActivateStuffScript.cs" />
@@ -179,6 +181,7 @@
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Items\ItemBlueprint.cs" />
      <Compile Include="Assets\Scripts\Items\ItemLoader.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemSpawner.cs" />
      <Compile Include="Assets\Scripts\Items\WeaponSpawner.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\MeleeWeaponBlueprint.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Blueprints\RangedWeaponBlueprint.cs" />
@@ -198,7 +201,13 @@
      <Compile Include="Assets\Scripts\Tribute\Mover.cs" />
      <Compile Include="Assets\Scripts\Tribute\Tribute.cs" />
      <Compile Include="Assets\Scripts\Tribute\TributeSpawner.cs" />
+     <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
+     <Compile Include="Assets\Tiles\RandomRemove.cs" />
      <Compile Include="Assets\Tiles\TileInfo.cs" />
+     <Compile Include="Assets\Traps\AOEDOTDamage.cs" />
+     <Compile Include="Assets\Traps\AOEDamage.cs" />
+     <Compile Include="Assets\Traps\ArrowTrap.cs" />
+     <Compile Include="Assets\Traps\Trap.cs" />
      <Compile Include="Assets\UI_BackButtonObject.cs" />
      <Compile Include="Assets\UI_CreateLevelScript.cs" />
      <Compile Include="Assets\UI_MonitorText.cs" />

@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tribute\Tribute.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AI\Actions\PickItemToUseOnTarget.cs">
     <Files>
+      <File FileName="Assets\Scripts\Tribute\TributeSpawner.cs" Line="26" Column="6" />
       <File FileName="Assets\AI\Actions\UseItem.cs" Line="33" Column="19" />
       <File FileName="Assets\Scripts\Tribute\Tribute.cs" Line="158" Column="4" />
       <File FileName="Assets\Scripts\Items\Inventory.cs" Line="1" Column="1" />
@@ -12,17 +12,10 @@
       <File FileName="Assets\Resources\XML\Weapons.xml" Line="1" Column="1" />
       <File FileName="Assets\AI\Actions\ShouldRunOrFight.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Tribute\Generator\TributeLoader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tribute\Generator\TributeBlueprint.cs" Line="1" Column="1" />
-      <File FileName="Assets\AI\Actions\PickItemToUseOnTarget.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Tribute\Generator\TributeBlueprint.cs" Line="26" Column="26" />
+      <File FileName="Assets\AI\Actions\PickItemToUseOnTarget.cs" Line="51" Column="23" />
       <File FileName="Assets\Resources\XML\Tributes.xml" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Tribute\Mover.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AddMonitorUI.cs">
-    <Files>
-      <File FileName="Assets\AddMonitorUI.cs" Line="19" Column="9" />
-      <File FileName="Assets\UI_MonitorText.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tribute\TributeSpawner.cs" Line="28" Column="7" />
->>>>>>> 746fe517eb3a5c21619bb89abfdcef5359747b44
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
