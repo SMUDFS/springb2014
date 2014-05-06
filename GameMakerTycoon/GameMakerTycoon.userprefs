@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tribute\Generator\TributeBlueprint.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\XML\Weapons.xml">
     <Files>
       <File FileName="Assets\Scripts\Tribute\TributeSpawner.cs" Line="26" Column="6" />
       <File FileName="Assets\AI\Actions\UseItem.cs" Line="33" Column="19" />

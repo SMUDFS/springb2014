@@ -47,6 +47,7 @@ public class TributeLoader : MonoBehaviour {
 					{
 						tribute.GetComponent<Tribute>().Name = mFemaleNamePool.GetRandItem();
 					}
+
 					tribute.renderer.material.color = new Color( Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f) );
 				}
 			}

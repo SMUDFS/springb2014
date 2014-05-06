@@ -25,6 +25,7 @@ public class Tribute : MonoBehaviour {
 	};
 
 	public Transform mItemUseAnchorPoint;
+	public GameObject mBody;
 
 	private string mName;
 	private int mTeamNumber = -1;
