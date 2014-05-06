@@ -1,21 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\XML\Weapons.xml">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AI\Actions\UseItem.cs">
     <Files>
-      <File FileName="Assets\Scripts\Tribute\TributeSpawner.cs" Line="26" Column="6" />
-      <File FileName="Assets\AI\Actions\UseItem.cs" Line="33" Column="19" />
-      <File FileName="Assets\Scripts\Tribute\Tribute.cs" Line="158" Column="4" />
-      <File FileName="Assets\Scripts\Items\Inventory.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DebugMouseControls.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Items\ItemSpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Items\WeaponSpawner.cs" Line="28" Column="42" />
-      <File FileName="Assets\Resources\XML\Weapons.xml" Line="1" Column="1" />
-      <File FileName="Assets\AI\Actions\ShouldRunOrFight.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tribute\Generator\TributeLoader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tribute\Generator\TributeBlueprint.cs" Line="114" Column="21" />
-      <File FileName="Assets\AI\Actions\PickItemToUseOnTarget.cs" Line="43" Column="74" />
-      <File FileName="Assets\Resources\XML\Tributes.xml" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tribute\Mover.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Tribute\Tribute.cs" Line="138" Column="14" />
+      <File FileName="Assets\AI\Actions\PickLocationToRunFromTargetTo.cs" Line="32" Column="77" />
+      <File FileName="Assets\AI\Actions\UseItem.cs" Line="25" Column="76" />
+      <File FileName="Assets\AI\Actions\PickItemToUseOnTarget.cs" Line="41" Column="8" />
+      <File FileName="Assets\Scripts\Tribute\Generator\TributeBlueprint.cs" Line="113" Column="1" />
+      <File FileName="Assets\Scripts\Items\Weapons\RangeWeapon.cs" Line="57" Column="6" />
+      <File FileName="Assets\Scripts\Items\Inventory.cs" Line="77" Column="19" />
+      <File FileName="Assets\AI\Actions\ShouldRunOrFight.cs" Line="30" Column="1" />
+      <File FileName="Assets\Scripts\Tribute\Combatant.cs" Line="23" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

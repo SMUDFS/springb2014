@@ -118,6 +118,7 @@ public class TributeBlueprint {
 					( ai.AI.Senses.GetSensor( "ears" ) as RAIN.Perception.Sensors.AudioSensor ).Range  = tribComp.VisionRange;
 					( ai.AI.Senses.GetSensor( "eyes" ) as RAIN.Perception.Sensors.VisualSensor ).Range  = tribComp.VisionRange;
 					//ai.AI.Motor.DefaultCloseEnoughDistance = tribute.collider.bounds.size.z;
+					ai.AI.WorkingMemory.SetItem<float>( "varCloseEnoughDistance", ai.AI.Motor.DefaultCloseEnoughDistance );
 					Debug.Log( "Default close distance: " +  ai.AI.Motor.DefaultCloseEnoughDistance );
 				}
 

@@ -57,7 +57,7 @@ public class RangeWeapon : Weapon {
 				{
 					projRigidbody = projectile.AddComponent<Rigidbody>();
 				}
-				projRigidbody.useGravity = true;
+				projRigidbody.useGravity = false;
 				
 
 				projRigidbody.velocity = velocity;
