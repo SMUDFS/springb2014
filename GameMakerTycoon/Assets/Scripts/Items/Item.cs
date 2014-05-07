@@ -56,13 +56,11 @@ public class Item : MonoBehaviour {
 		Renderer renderer = GetComponent<Renderer>();
 		if( renderer != null )
 			renderer.enabled = false;
-		else
+
+		Renderer[] renderers = GetComponentsInChildren<Renderer>();
+		foreach( Renderer r in renderers )
 		{
-			Renderer[] renderers = GetComponentsInChildren<Renderer>();
-			foreach( Renderer r in renderers )
-			{
-				r.enabled = false;
-			}
+			r.enabled = false;
 		}
 		enabled = false;
 		collider.enabled = false;
@@ -74,13 +72,11 @@ public class Item : MonoBehaviour {
 		Renderer renderer = GetComponent<Renderer>();
 		if( renderer != null )
 			renderer.enabled = true;
-		else
+
+		Renderer[] renderers = GetComponentsInChildren<Renderer>();
+		foreach( Renderer r in renderers )
 		{
-			Renderer[] renderers = GetComponentsInChildren<Renderer>();
-			foreach( Renderer r in renderers )
-			{
-				r.enabled = true;
-			}
+			r.enabled = true;
 		}
 		enabled = true;
 		collider.enabled = true;
