@@ -4,6 +4,7 @@ using System.Collections;
 public class UI_TileSelected : MonoBehaviour {
 
 	public GameObject tilePrefab;
+	public GameObject myGroup;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +20,8 @@ public class UI_TileSelected : MonoBehaviour {
 	{
 		if (state)
 		{
-			Debug.Log("Tile Selection: " + name);
-			GameObject.Find("TerrainGroup").GetComponent<UI_TileScript>().SetTile(tilePrefab);
+			Debug.Log("Tile Selected: " + name);
+			myGroup.GetComponent<UI_TileScript>().SetTile(tilePrefab);
 
 		}
 		else

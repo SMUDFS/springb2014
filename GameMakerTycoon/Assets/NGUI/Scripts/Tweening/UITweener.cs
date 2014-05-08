@@ -358,4 +358,21 @@ public abstract class UITweener : IgnoreTimeScale
 		comp.enabled = true;
 		return comp;
 	}
+
+	public static UITweener GetTweenOfGroup(GameObject go,int _tweengroup,bool includeChildren)
+	{
+		UITweener[] mTweens = includeChildren ? go.GetComponentsInChildren<UITweener>() : go.GetComponents<UITweener>();
+		UITweener tww = null;
+		for (int i = 0, imax = mTweens.Length; i < imax; ++i)
+		{
+			UITweener tw = mTweens[i];
+			// If the tweener's group matches, we can work with it
+			if (tw.tweenGroup == _tweengroup)
+			{
+				tww = tw;
+			}
+		}
+		return tww;
+		
+	}
 }
