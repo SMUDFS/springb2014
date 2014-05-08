@@ -34,14 +34,16 @@ public class AOEDamage : Trap
 
 	public override void Trigger()
 	{
-		--mTriggerCount;
+		if(UnityEngine.Time.time - mStartTime >= mPSTime)
+		{
+			--mTriggerCount;
 
-		mStartTime = UnityEngine.Time.time;
+			mStartTime = UnityEngine.Time.time;
 
-		ActivateAllParticleSystems();
+			ActivateAllParticleSystems();
 
-		DealDamage(mDamage);
-
+			DealDamage(mDamage);
+		}
 		//do something
 	}
 

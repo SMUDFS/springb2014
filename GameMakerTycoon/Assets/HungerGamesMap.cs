@@ -58,18 +58,9 @@ public class HungerGamesMap : AccessableObject {
 	// Update is called once per frame
 	void Update()
 	{
-		if(Input.GetMouseButtonDown(0))
-			ChangeTile(ref mPossibleTiles[2].tilePrefab);
-
-		if(Input.GetMouseButtonDown(1))
-		{
-			ChangeTile(ref mPossibleTiles[3].tilePrefab);
-			RegeneratePathing();
-		}
-
 		UpdateAccessableObject();
 
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(0) && mIsBeingAccessed)
 		{
 			Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit[] hits = Physics.RaycastAll(cameraRay);
