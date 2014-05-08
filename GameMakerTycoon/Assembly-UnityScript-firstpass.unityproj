@@ -85,6 +85,7 @@
      <None Include="Assets\Resources\XML\Tributes.xml" />
      <None Include="Assets\RAIN\Editor\Shaders\VisualSensorLineShader.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font.shader" />
+     <None Include="Assets\Elementals\!Readme.txt" />
      <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\NGUI\ReadMe - 2.7.0.txt" />

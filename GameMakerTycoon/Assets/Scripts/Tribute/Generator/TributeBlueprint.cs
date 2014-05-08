@@ -120,6 +120,7 @@ public class TributeBlueprint {
 					//ai.AI.Motor.DefaultCloseEnoughDistance = tribute.collider.bounds.size.z;
 					ai.AI.WorkingMemory.SetItem<float>( "varCloseEnoughDistance", ai.AI.Motor.DefaultCloseEnoughDistance );
 					Debug.Log( "Default close distance: " +  ai.AI.Motor.DefaultCloseEnoughDistance );
+
 				}
 
 			}

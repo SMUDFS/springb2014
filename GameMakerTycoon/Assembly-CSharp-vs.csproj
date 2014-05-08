@@ -56,6 +56,8 @@
      <Compile Include="Assets\AddMonitorUI.cs" />
      <Compile Include="Assets\AddScore.cs" />
      <Compile Include="Assets\CreateLevel.cs" />
+     <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
+     <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\HungerGamesMap.cs" />
      <Compile Include="Assets\MapObjectList.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
@@ -208,6 +210,7 @@
      <Compile Include="Assets\Traps\AOEDOTDamage.cs" />
      <Compile Include="Assets\Traps\AOEDamage.cs" />
      <Compile Include="Assets\Traps\ArrowTrap.cs" />
+     <Compile Include="Assets\Traps\FireballTrap.cs" />
      <Compile Include="Assets\Traps\Trap.cs" />
      <Compile Include="Assets\UI_BackButtonObject.cs" />
      <Compile Include="Assets\UI_CreateLevelScript.cs" />
@@ -250,6 +253,7 @@
      <None Include="Assets\Resources\XML\Tributes.xml" />
      <None Include="Assets\RAIN\Editor\Shaders\VisualSensorLineShader.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font.shader" />
+     <None Include="Assets\Elementals\!Readme.txt" />
      <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Cartoony Weapon Pack\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\NGUI\ReadMe - 2.7.0.txt" />
