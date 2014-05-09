@@ -58,10 +58,9 @@ public class HungerGamesMap : AccessableObject {
 	// Update is called once per frame
 	void Update()
 	{
-
 		UpdateAccessableObject();
 
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(0) && mIsBeingAccessed)
 		{
 			Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit[] hits = Physics.RaycastAll(cameraRay);

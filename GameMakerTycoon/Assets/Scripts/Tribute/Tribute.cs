@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using RAIN.Core;
 
 [RequireComponent (typeof(Combatant))]
 [RequireComponent (typeof(Rigidbody))]
@@ -127,11 +128,15 @@ public class Tribute : MonoBehaviour {
 	public void PickupItem( Item item )
 	{
 		mInventory.PickupItem( item );
+		AIRig ai = GetComponentInChildren<AIRig>();
+		ai.AI.WorkingMemory.SetItem<bool>( "varHasWeapon", mInventory.HasWeapon() );
 	}
 
 	public void DropItem( int idx )
 	{
 		mInventory.DropItem( idx );
+		AIRig ai = GetComponentInChildren<AIRig>();
+		ai.AI.WorkingMemory.SetItem<bool>( "varHasWeapon", mInventory.HasWeapon() );
 	}
 
 	public void ApplyItemEffects( Item.ItemEffect effects )

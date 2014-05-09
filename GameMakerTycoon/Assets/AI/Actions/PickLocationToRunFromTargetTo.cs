@@ -30,6 +30,7 @@ public class PickLocationToRunFromTargetTo : RAINAction
 				runAwayLocation += deltaToTarget.normalized * ( ai.Senses.GetSensor( "ears" ) as RAIN.Perception.Sensors.AudioSensor ).Range;
 				runAwayLocation.y = ai.Body.gameObject.transform.position.y;
 				ai.WorkingMemory.SetItem<Vector3>( "runAwayLocation", runAwayLocation );
+				Debug.Log( "Choosing run away location" );
 			}
 
 		}

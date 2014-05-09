@@ -81,6 +81,7 @@ public class Combatant : MonoBehaviour {
 		mCurrentHealth -= damage;
 		Debug.Log( "Damage taken: " + damage );
 		AIRig ai = gameObject.GetComponentInChildren<AIRig>();
+		Instantiate( Resources.Load( "Tribute/Hit_Particle", typeof(ParticleSystem) ), gameObject.transform.position, Quaternion.identity );
 	}
 
 	public void AddToKillCount( int count )

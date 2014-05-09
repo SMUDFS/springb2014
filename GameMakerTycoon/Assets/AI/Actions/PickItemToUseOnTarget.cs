@@ -37,7 +37,9 @@ public class PickItemToUseOnTarget : RAINAction
 				}
 			}
 			if( currentItemIdx != -1 )
-				ai.WorkingMemory.SetItem<float>( "closeEnoughDistance", tribComp.TheInventory.GetItem( currentItemIdx ).ItemRange );
+				ai.WorkingMemory.SetItem<float>( "varCloseEnoughDistance", tribComp.TheInventory.GetItem( currentItemIdx ).ItemRange );
+			else
+				ai.WorkingMemory.SetItem<float>( "varCloseEnoughDistance", ai.Motor.DefaultCloseEnoughDistance );
 
 		}
 		ai.WorkingMemory.SetItem<int>( "currentItemIdxToUse", currentItemIdx );

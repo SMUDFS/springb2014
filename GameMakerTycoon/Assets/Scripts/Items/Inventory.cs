@@ -69,4 +69,14 @@ public class Inventory {
 			return null;
 		}
 	}
+
+	public bool HasWeapon()
+	{
+		for( int i = 0; i < mItems.Count; ++i )
+		{
+			if( ( mItems[i] as Weapon ) != null )
+				return true;
+		}
+		return false;
+	}
 }

@@ -10,14 +10,14 @@
 		</AttributeStats>
 		<Movement>
 			<VisionRange>5~10</VisionRange>
-			<MovementSpeed>5~10</MovementSpeed>
+			<MovementSpeed>1.0~3.0</MovementSpeed>
 			<!--degrees/sec-->
 			<TurnSpeed>150~180</TurnSpeed>
 		</Movement>	
 		<CombatStats>
 			<Power>10~15</Power>
 			<Speed>0.2~0.5</Speed>
-			<Range>15~20</Range>
+			<Range>1~1</Range>
 			<MaxHealth>100~100</MaxHealth>
 		</CombatStats>
 	</Tribute>
