@@ -51,7 +51,7 @@ public class UI_TileScript : MonoBehaviour {
 
 	private bool IsFundsAvailable()
 	{
-		return mCurrentFunds - mTileInfo.mCost >= 0;
+		return mTileInfo.mCost == 0 || ( mCurrentFunds - mTileInfo.mCost ) >= 0;
 	}
 
 	private void ApplyPurchase()
@@ -76,7 +76,9 @@ public class UI_TileScript : MonoBehaviour {
 		if (Input.GetButtonDown("Fire1")) 
 		{
 			if ( mTile == null )
-				;
+			{
+				Debug.Log("Tile Placement: NULL");
+			}
 			else if ( mTile.tag == "Tile" )
 			{
 				if ( IsFundsAvailable() )
@@ -91,18 +93,27 @@ public class UI_TileScript : MonoBehaviour {
 			}
 			else if ( mTile.tag == "Trap" )
 			{
+				Debug.Log("Placing Trap: 1");
 				Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 				RaycastHit[] hits = Physics.RaycastAll(cameraRay);
 				foreach(RaycastHit hit in hits)
 				{
 					GameObject tile = hit.collider.gameObject;
-					if ( tile != null && tile.tag == "Tile" && IsFundsAvailable() )
+					if ( tile != null && tile.tag == "Tile" )
 					{
-						Debug.Log("Placing Trap: " + mTile.name);
-						ApplyPurchase();
-						Vector3 spawnLoc = hit.point;
-						spawnLoc.y += 0.5f;
-						Instantiate( mTile, spawnLoc, tile.transform.rotation );
+						Debug.Log("Placing Trap: 2");
+						if ( IsFundsAvailable() )
+						{
+							Debug.Log("Placing Trap: " + mTile.name);
+							ApplyPurchase();
+							Vector3 spawnLoc = hit.point;
+							spawnLoc.y += 0.5f;
+							Instantiate( mTile, spawnLoc, tile.transform.rotation );
+						}
+						else
+						{
+							Debug.Log("Not enough cashmoney for Trap: " + mTile.name);
+						}
 					}
 				}
 			}
