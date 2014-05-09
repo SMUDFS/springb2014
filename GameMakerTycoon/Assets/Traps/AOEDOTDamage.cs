@@ -30,15 +30,13 @@ public class AOEDOTDamage : AOEDamage
 
 	public override void Trigger()
 	{
-		mTriggerCount -= 1;
-
 		if(!mIsOn)
 		{
 			mIsOn = true;
 			mOnStartTime = UnityEngine.Time.time;
 			ActivateAllParticleSystems();
+			mTriggerCount -= 1;
 		}
-		//do something
 	}
 
 	public override bool ShouldDie()
